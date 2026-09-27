@@ -1,0 +1,30 @@
+name: University ERP CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - name: Check ERP Files
+        run: |
+          test -f index.html
+          test -f students.html
+          test -f attendance.html
+          test -f courses.html
+          test -f examination.html
+          test -f style.css
+          echo "University ERP files checked successfully."
+
+      - name: Build Completed
+        run: echo "University ERP CI pipeline completed successfully."
